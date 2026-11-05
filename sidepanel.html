@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>.feature: @wip e QUESTION</title>
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { margin: 0; background: #fff; color: #172b4d; font-size: 13px; display: flex; flex-direction: column; height: 100vh; }
+    header { display: flex; align-items: center; gap: 8px; padding: 12px; border-bottom: 1px solid #dcdfe4; }
+    header div { flex: 1; min-width: 0; }
+    header b { display: block; font-size: 14px; }
+    header small { color: #626f86; font-size: 12px; }
+    header button { border: 1px solid #dcdfe4; background: #fff; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 12px; color: #172b4d; }
+    .filters { display: flex; flex-wrap: nowrap; gap: 4px; padding: 8px 12px; border-bottom: 1px solid #dcdfe4; }
+    .filters:empty { display: none; }
+    .chip { --c: #0c66e4; flex: none; border: 1px solid var(--c); background: #fff; color: var(--c); border-radius: 3px;
+      padding: 2px 5px; cursor: pointer; font-size: 11px; font-weight: 700; white-space: nowrap; }
+    .chip.wip { --c: #ff8b00; } .chip.question { --c: #6554c0; } .chip.comment { --c: #626f86; }
+    .chip.on { background: var(--c); color: #fff; }
+    .list { flex: 1; overflow: auto; padding: 8px 12px 24px; }
+    .status { color: #626f86; padding: 16px 0; }
+    .file { margin: 12px 0 6px; font-weight: 600; color: #44546f; font-size: 12px; word-break: break-all; }
+    .item { border: 1px solid #dcdfe4; border-radius: 6px; margin-bottom: 8px; overflow: hidden; }
+    .head { display: flex; gap: 8px; align-items: flex-start; padding: 8px; cursor: pointer; background: #f7f8f9; }
+    .head:hover { background: #e9f2ff; }
+    .badge { flex: none; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 3px; color: #fff; }
+    .badge.wip { background: #ff8b00; } .badge.question { background: #6554c0; } .badge.comment { background: #626f86; }
+    .ln { flex: none; color: #626f86; font-family: ui-monospace, Menlo, monospace; font-size: 12px; padding-top: 1px; }
+    .code { flex: 1; min-width: 0; font-family: ui-monospace, Menlo, monospace; font-size: 12px; white-space: pre-wrap; word-break: break-word;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .thread { padding: 8px 8px 4px; border-top: 1px solid #dcdfe4; }
+    .c { display: flex; gap: 8px; margin-bottom: 8px; }
+    .c > div { flex: 1; min-width: 0; }
+    .replies { margin-left: 32px; }
+    .c img { width: 24px; height: 24px; border-radius: 50%; flex: none; }
+    .meta { font-size: 12px; } .meta b { color: #172b4d; } .meta span { color: #626f86; margin-left: 6px; }
+    .body { font-size: 13px; line-height: 1.4; word-break: break-word; } .body p { margin: 2px 0; } .body a { color: #0c66e4; }
+    .body img { max-width: 100%; }
+    .none { color: #626f86; font-size: 12px; padding: 6px 8px; border-top: 1px solid #dcdfe4; }
+  </style>
+</head>
+<body>
+  <header>
+    <div><b>.feature: @wip e QUESTION</b><small id="pr"></small></div>
+    <button id="reload">Atualizar</button>
+  </header>
+  <div class="filters"></div>
+  <div class="list"></div>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

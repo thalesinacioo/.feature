@@ -1,0 +1,30 @@
+/* Linhas de .feature com marcadores (diff da PR) */
+.bfm-wip { background: rgba(255, 171, 0, 0.28) !important; box-shadow: inset 4px 0 0 #ff8b00; }
+.bfm-question { background: rgba(101, 84, 192, 0.22) !important; box-shadow: inset 4px 0 0 #6554c0; }
+.bfm-flash { animation: bfm-flash 1.6s ease-out 1; }
+@keyframes bfm-flash {
+  0%, 40% { outline: 3px solid #0c66e4; outline-offset: -3px; }
+  100% { outline: 3px solid transparent; outline-offset: -3px; }
+}
+
+/* Sintaxe Gherkin: a cópia colorida substitui o texto original na tela */
+.bfm-gh-on > :not(.bfm-gh) { display: none !important; }
+.bfm-g-block { color: #0055cc; font-weight: 700; }
+.bfm-g-title { color: #0055cc; }
+.bfm-g-step { color: #a54800; font-weight: 700; }
+.bfm-g-tag { color: #c9372c; font-weight: 600; }
+.bfm-g-comment { color: #6b778c; font-style: italic; }
+.bfm-g-docstring { color: #216e4e; }
+.bfm-g-string { color: #216e4e; }
+.bfm-g-param { color: #6e5dc6; font-weight: 600; }
+.bfm-g-pipe { color: #8590a2; }
+
+html[data-color-mode="dark"] .bfm-g-block,
+html[data-color-mode="dark"] .bfm-g-title { color: #85b8ff; }
+html[data-color-mode="dark"] .bfm-g-step { color: #fea362; }
+html[data-color-mode="dark"] .bfm-g-tag { color: #fd9891; }
+html[data-color-mode="dark"] .bfm-g-comment { color: #8c9bab; }
+html[data-color-mode="dark"] .bfm-g-docstring,
+html[data-color-mode="dark"] .bfm-g-string { color: #7ee2b8; }
+html[data-color-mode="dark"] .bfm-g-param { color: #b8acf6; }
+html[data-color-mode="dark"] .bfm-g-pipe { color: #738496; }
