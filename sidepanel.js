@@ -80,4 +80,14 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
 chrome.tabs.onActivated.addListener(load);
 chrome.tabs.onUpdated.addListener((id, info) => { if (id === tabId && info.status === 'complete') load(); });
 
+// Avisa o background que o painel desta janela está aberto; ele pede para fechar quando a aba azul é clicada.
+// Se o service worker dormir, a porta cai: reconecta.
+function connectPanel() {
+  const port = chrome.runtime.connect({ name: 'bfm-panel' });
+  chrome.windows.getCurrent().then((w) => port.postMessage({ windowId: w.id }));
+  port.onMessage.addListener((msg) => { if (msg.type === 'close') window.close(); });
+  port.onDisconnect.addListener(() => setTimeout(connectPanel, 300));
+}
+
+connectPanel();
 load();

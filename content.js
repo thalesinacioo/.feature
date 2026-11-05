@@ -230,16 +230,23 @@
         cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
       button[hidden] { display: none; }
     </style>
-    <button hidden title="Abrir painel lateral"></button>`;
+    <button hidden title="Abrir ou fechar o painel lateral"></button>`;
   const tab = root.querySelector('button');
-  tab.addEventListener('click', () => chrome.runtime.sendMessage({ type: 'bfm-open' }));
+  // Extensão recarregada deixa este script órfão: só um F5 religa
+  const send = (msg) => {
+    if (!chrome.runtime || !chrome.runtime.id) { tab.textContent = 'Dê F5 na página'; return; }
+    chrome.runtime.sendMessage(msg).catch(() => {});
+  };
+  // Acorda o service worker antes do clique, senão o Chrome pode descartar o gesto e o painel não abre
+  tab.addEventListener('mouseenter', () => send({ type: 'bfm-ping' }));
+  tab.addEventListener('click', () => send({ type: 'bfm-toggle' }));
 
   function publish() {
     const markers = state.items.filter((i) => i.type !== 'comment').length;
     tab.hidden = !state.key;
     tab.textContent = state.loading ? '.feature …' : `.feature (${markers})`;
     // Sem painel aberto ninguém recebe: ignora o erro
-    chrome.runtime.sendMessage({ type: 'bfm-state', ...snapshot() }).catch(() => {});
+    send({ type: 'bfm-state', ...snapshot() });
   }
 
   chrome.runtime.onMessage.addListener((msg, sender, reply) => {

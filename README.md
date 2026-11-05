@@ -23,7 +23,7 @@ Extensão do Chrome para revisar arquivos `.feature` (Gherkin/Cucumber) em pull 
 ## Usar
 
 1. Abra uma PR no Bitbucket (`https://bitbucket.org/<workspace>/<repo>/pull-requests/<id>`).
-2. Abra o painel pelo ícone da extensão ou pela aba azul **.feature (N)** na direita da página.
+2. Abra o painel pelo ícone da extensão ou pela aba azul **.feature (N)** na direita da página. Clicar de novo na aba azul fecha o painel.
 3. Clique num item para ir até a linha.
 
 Depois de atualizar a extensão em `chrome://extensions`, dê F5 na página da PR.
