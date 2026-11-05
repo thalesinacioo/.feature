@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Bitbucket .feature markers",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Destaca @wip e QUESTION em .feature nas PRs do Bitbucket e lista tudo (com comentários) no painel lateral do Chrome.",
   "permissions": ["sidePanel"],
   "action": { "default_title": "Abrir painel .feature" },
